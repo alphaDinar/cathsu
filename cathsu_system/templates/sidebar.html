@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="col-md-2">
+  <!-- Sidebar navigation -->
+  <div class="sidebar">
+      <!-- Logo -->
+      <h1 class="logo">
+          <img src="{% static 'images/logo-head.jpg' %}" alt="" style="border-radius: 50%;">
+      </h1>
+      <!-- Links -->
+      <ul class="nav flex-column">
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_member' %}">New Members Registration</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'all_members' %}">All Cathsu Members</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'attendance' %}">Attendance</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'attendance_records' %}">Attendance Records</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'document' %}">Meetings & Other Document</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'finance' %}">Finance</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'executive'%}">Executive</a>
+          </li>
+      </ul>
+
+      <a href="{% url 'login' %}" class="log-out-btn">Log out</a>
+  </div>
+</div>

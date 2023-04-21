@@ -8,6 +8,7 @@ urlpatterns = [
     path('document', views.document, name='document'),
     path('all_members', views.all_members, name='all_members'),
     path('attendance', views.attendance, name='attendance'),
+    path('attendance_records', views.attendance_records, name='attendance_records'),
     path('finance', views.finance, name='finance'),
     path('dashboard', views.dashboard, name='dashboard'),
 

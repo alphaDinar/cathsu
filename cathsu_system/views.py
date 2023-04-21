@@ -57,13 +57,13 @@ def attendance(request):
         for key, value in post_data.items():
             if value == 'present':
                 status = {
-                    'member' : key,
+                    'member' : f"{Member.objects.get(id=key).first_name} {Member.objects.get(id=key).last_name}",
                     'status' : 'present'
                 }
                 att_box.append(status)
             else:
                 status = {
-                    'member' : key,
+                    'member' : f"{Member.objects.get(id=key).first_name} {Member.objects.get(id=key).last_name}",
                     'status' : 'absent'
                 }
                 att_box.append(status)
@@ -71,11 +71,20 @@ def attendance(request):
         attendance = Attendance()
         attendance.list = att_box
         attendance.save()
+        return redirect('attendance_records')
     members = Member.objects.all()
     context = {
         'members' : members
     }
     return render(request, 'attendance.html', context )
+
+def attendance_records(request):
+    attendance = Attendance.objects.last()
+
+    context ={
+        'attendance' :  Attendance.objects.last()
+    }
+    return render(request, 'attendance_records.html', context )
 
 def finance(request):
     return render(request, 'finance.html' )
