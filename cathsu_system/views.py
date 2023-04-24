@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Member
 from .models import Attendance
+from django.utils import timezone
 
 # Create your views here.
 def login(request):
@@ -72,7 +73,8 @@ def attendance(request):
         return redirect('attendance_records')
     members = Member.objects.all()
     context = {
-        'members' : members
+        'members' : members,
+        'time' : timezone.now()
     }
     return render(request, 'attendance.html', context )
 
@@ -95,5 +97,8 @@ def dashboard(request):
 
 
 def test(request):
-   
+    user_username = request.POST.get('username')
+    user_password = request.POST.get('pass1')
+    user = authenticate(username=user_username, password=user_password)
+    login(request, user)
     return render(request, 'test.html')
