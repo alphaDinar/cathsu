@@ -31,11 +31,7 @@ def add_member(request):
 
 def all_members(request):
     att = Attendance.objects.last()
-    for li in att.list:
-
-        print(Member.objects.get(id=li['member']))
-        print(li['status'])
-
+    # for li in att.list:
 
     members = Member.objects.all()
     context = {
@@ -58,13 +54,15 @@ def attendance(request):
             if value == 'present':
                 status = {
                     'member' : f"{Member.objects.get(id=key).first_name} {Member.objects.get(id=key).last_name}",
-                    'status' : 'present'
+                    'status' : 'present',
+                    'image_url' : Member.objects.get(id=key).pro_pic.url
                 }
                 att_box.append(status)
             else:
                 status = {
                     'member' : f"{Member.objects.get(id=key).first_name} {Member.objects.get(id=key).last_name}",
-                    'status' : 'absent'
+                    'status' : 'absent',
+                    'image_url' : Member.objects.get(id=key).pro_pic.url
                 }
                 att_box.append(status)
         print(att_box)

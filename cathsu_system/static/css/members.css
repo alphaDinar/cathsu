@@ -1,0 +1,44 @@
+.attListBox{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /* border: 1px solid gold; */
+}
+.attListBox .sh{
+  margin: 10px 8px;
+  background: #7ba791;
+  color: white;
+  padding: 10px;
+  border-radius: 3px;
+}
+.attListBox .attList{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  width: 100%;
+}
+.attList .attLi{
+  width: 100%;
+  width: 49%;
+  display: flex;
+  margin: 7px 0;
+  margin-left: 0.5%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  /* border: 1px solid black; */
+}
+.attList .attLi button{
+  border: none;
+  border-radius: 3px;        
+}
+.attList .attLi .imgBox{
+  width: 120px;
+  width: 60px;
+  height: 60px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}

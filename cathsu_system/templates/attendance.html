@@ -46,59 +46,94 @@
                 <button type="button" id="gen_sheet">Generate Attendance Sheet</button>
                 <form class="attendance_sheet" method="post">
                     {% csrf_token %}
+                    <section class="member_box">
                     {% for member in members %}
-                        <div class="member_box">
-                            {{member.first_name}} {{member.last_name}} <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url({{member.pro_pic.url}});"></div>
-                        
-                        <label>
-                            <input type="radio" name="{{member.id}}" value="present" required>
-                            <div class="att_box present">
-                                <span>Present</span>
-                            </div>
-                        </label>
-                        <label>
-                            <input type="radio" name="{{member.id}}" value="absent" required>
-                            <div class="att_box absent">
-                                <span>Absent</span>
-                            </div>
-                        </label>
+                        <div class="member">
+                            <div class="imgBox" style="background-image: url({{member.pro_pic.url}})"></div>
+                            <span>
+                                {{member.first_name}} {{member.last_name}}
+                            </span>
+                            <nav>
+                                <label>
+                                    <input type="radio" name="{{member.id}}" value="present" required>
+                                    <div class="att_box present" style="border: 1px dotted #7ba791;">
+                                        <span>Present</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <input type="radio" name="{{member.id}}" value="absent" required>
+                                    <div class="att_box absent" style="border: 1px dotted #d79881;">
+                                        <span>Absent</span>
+                                    </div>
+                                </label>
+                            </nav>
+                            
                         </div>
                     {% endfor %}
+                    </section>
                     <button type="submit">submit</button>
                 </form>
 
                 <style>
+                    form{
+                        display: flex;
+                        flex-wrap: wrap;
+                        /* border: 2px solid gold; */
+                    }
+                    form .member_box{
+                        display: flex;
+                        /* justify-content: space-around; */
+                        width: 100%;
+                        flex-wrap: wrap;
+                    }
+                    .member{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 5px 0;
+                        width: 49%;
+                        margin-left: 0.7%;
+                        padding: 10px 5%;
+                        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                        /* border: 2px solid black; */
+                        /* gap: 5rem; */
+                    }
+                    .member nav{
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                    }
+                    .member .imgBox{
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        background-size: cover;
+                        background-position: center;
+                    }
                     .att_box{
-                        border: 1px solid salmon;
-                        padding: 5px;
+                        /* border: 1px solid salmon; */
+                        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                        padding: 3px;
+                        border-radius: 3px;
                     }
                     label > input[type='radio']{
-                        opacity: 0;
+                        display: none;
                     }
                     label > input[type='radio']:checked + .present{
-                        background: rgb(38, 228, 133);
+                        background: #7ba791;
                         color: white;
                     }
                     label > input[type='radio']:checked + .absent{
-                        background: salmon;
+                        background: #d79881;
                         color: white;
                     }
-                </style>
-
-                <style>
-                    .member_box{
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        /* justify-content: space-around; */
-                        width: 100%;
-                        /* padding: 0 10%; */
-                        border: 1px solid black;
-                        gap: 5rem;
-                    }
-                    .member_box div{
-                        background-position: center;
-                        background-size: cover;
+                    form button{
+                        background: rgb(16, 142, 192);
+                        padding: 5px 10px;
+                        border-radius: 3px;
+                        color: white;
+                        margin-left: 0.7%;
+                        border: none;
                     }
                 </style>
 
